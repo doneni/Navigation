@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Text, StyleSheet, View, TouchableOpacity, Button } from 'react-native';
 import 'react-native-gesture-handler';
-import { createAppContainer, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
-const Home = () =>
+const Home = ({navigation}) =>
     <View style={styles.eachView}>
         <Text> 홈 화면 입니다. </Text>
         <Button
           title="챗 화면으로 가기"
-          onPress={() => this.props.navigation.navigate('Chat')}
+          onPress={() => navigation.navigate('Chat')}
         />
         <Button
           title="세팅 화면으로 가기"
-          onPress={() => this.props.navigation.navigate('Settings')}
+          onPress={() => navigation.navigate('Settings')}
         />
     </View>
 
@@ -30,6 +30,7 @@ const Settings = () =>
     </View>
 
 function App() {
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
