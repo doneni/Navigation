@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, Button } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,28 +9,39 @@ const Stack = createStackNavigator();
 const Home = ({navigation}) =>
     <View style={styles.eachView}>
         <Text> 홈 화면 입니다. </Text>
-        <Button
-          title="챗 화면으로 가기"
+        <TouchableOpacity
           onPress={() => navigation.navigate('Chat')}
-        />
-        <Button
-          title="세팅 화면으로 가기"
+        >
+            <Text style={styles.button}>챗 화면으로 가기</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => navigation.navigate('Settings')}
-        />
+        >
+            <Text style={styles.button}>세팅 화면으로 가기</Text>
+        </TouchableOpacity>
     </View>
 
-const Chat = () =>
+const Chat = ({navigation}) =>
     <View style={styles.eachView}>
         <Text> 챗 화면 입니다. </Text>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('Home')}
+        >
+            <Text style={styles.button}>홈 화면으로 가기</Text>
+        </TouchableOpacity>
     </View>
 
-const Settings = () =>
+const Settings = ({navigation}) =>
     <View style={styles.eachView}>
         <Text> 세팅 화면 입니다. </Text>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('Home')}
+        >
+            <Text style={styles.button}>홈 화면으로 가기</Text>
+        </TouchableOpacity>
     </View>
 
 function App() {
-
     return (
         <NavigationContainer>
             <Stack.Navigator>
@@ -54,5 +65,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  button: {
+    color: '#0080FF',
+    marginTop: 10,
   },
 })
